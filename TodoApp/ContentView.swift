@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var searchBar: some View {
         HStack {
-            TextField("Enter in a new task", text: self.$newTodo)
+            TextField("Enter in a new task", text: self.$newTodo).autocapitalization(.words)
             Button(action: self.addTodo, label: {
                 Text("Add Todo")
             })
