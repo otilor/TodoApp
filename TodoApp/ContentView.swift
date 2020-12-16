@@ -11,7 +11,7 @@ import Combine
 struct ContentView: View {
     @ObservedObject var taskStore = TaskStore()
     @State var newTodo: String = ""
-    
+    @State var name: String = "Gabriel Akinyosoye"
     var searchBar: some View {
         HStack {
             TextField("Enter in a new task", text: self.$newTodo).autocapitalization(.words)
@@ -21,6 +21,12 @@ struct ContentView: View {
         }
     }
     
+    var footer: some View {
+        HStack {
+            Text("Developed by " + self.name)
+            Image(systemName: "person")
+        }
+    }
     func addTodo() {
         
         taskStore.tasks.append(Task(id: String(taskStore.tasks.count + 1), todoItem: newTodo))
@@ -37,6 +43,7 @@ struct ContentView: View {
                 }.navigationBarTitle("Tasks")
             }
         }
+        footer.padding(.bottom, 4.0).font(Font.caption.weight(.light))
     }
 }
 
