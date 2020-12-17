@@ -14,8 +14,8 @@ struct ContentView: View {
     @State var name: String = "Gabriel Akinyosoye"
     var searchBar: some View {
         HStack {
-            TextField("Enter in a new task", text: self.$newTodo).autocapitalization(.words)
-            Button(action: self.addTodo, label: {
+            TextField("Enter in a new task", text: self.$newTodo).autocapitalization(.sentences)
+            Button(action: self.storeTodo, label: {
                 Text("Add Todo")
             })
         }
@@ -27,10 +27,11 @@ struct ContentView: View {
             Image(systemName: "person")
         }
     }
-    func addTodo() {
+    
+    func storeTodo() {
         
         taskStore.tasks.append(Task(id: String(taskStore.tasks.count + 1), todoItem: newTodo))
-        
+         
         self.newTodo = ""
     }
     
